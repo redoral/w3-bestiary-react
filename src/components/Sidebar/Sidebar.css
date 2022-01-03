@@ -1,0 +1,95 @@
+.sidebarContainer {
+  width: 600px;
+  background-color: #060606;
+}
+
+.sidebarHeader {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url('https://images4.alphacoders.com/587/thumb-1920-587508.png');
+  background-position-y: top;
+  background-position-x: right;
+  background-size: cover;
+  padding: 10px 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebarTitle {
+  font-size: 2em;
+  width: 300px;
+}
+
+.searchBar {
+  padding: 10px 25px;
+  width: 400px;
+  border-radius: 50px;
+  border: 0;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.searchBar:focus {
+  border: 0;
+  outline: none;
+}
+
+.monstersTitle {
+  font-weight: 500;
+  font-size: 1.5em;
+  padding-left: 10px;
+}
+
+.monsterList {
+  padding: 20px;
+}
+
+.monsterItem {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.sidebarMonsterIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+}
+
+.sidebarMonsterName {
+  cursor: pointer;
+  user-select: none;
+  margin-left: 10px;
+  font-weight: 500;
+  color: #cecece;
+}
+
+.sidebarMonsterName:hover {
+  color: #aaa;
+}
+
+.addMonsterButton {
+  cursor: pointer;
+  user-select: none;
+  padding: 5px;
+  width: 200px;
+  text-align: center;
+  font-size: 0.9em;
+  border-radius: 100px;
+  border: 1px solid #ececec;
+  background-color: #060606;
+  display: flex;
+  align-items: center;
+  transition: border 0.5s, background-color 0.5s, color 0.5s;
+}
+
+.addMonsterButton:hover {
+  border: 1px solid #060606;
+  background-color: #ececec;
+  color: #060606;
+}
+
+.addMonsterIcon {
+  justify-self: start;
+  border-radius: 100px;
+  padding-right: 40px;
+}
