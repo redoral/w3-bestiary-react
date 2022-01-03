@@ -33,7 +33,11 @@ const SidebarComponent = (props) => {
             props.setSearchQuery(ev.target.value);
           }}
         />
-        <p className='monstersTitle'>All monsters</p>
+        <p className='monstersTitle'>
+          {props.searchQuery.length > 0
+            ? "Search query '" + props.searchQuery + "'"
+            : 'All monsters'}
+        </p>
         {props.monsters.items
           .filter((query) => {
             return query.name
