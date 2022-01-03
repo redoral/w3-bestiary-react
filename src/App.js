@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react';
 import MonsterViewComponent from './components/MonsterView/MonsterView';
 import SidebarComponent from './components/Sidebar/Sidebar';
+import spinner from './assets/spinner.gif';
 import axios from 'axios';
 
 function App() {
@@ -21,21 +22,30 @@ function App() {
     }
   }, []);
 
-  console.log(monsters.items);
-
-  return (
-    <div className='App'>
-      <SidebarComponent
-        monsters={monsters}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        setCurrentMonster={setCurrentMonster}
-        currentMonster={currentMonster}
-        setOpacity={setOpacity}
-      />
-      <MonsterViewComponent currentMonster={currentMonster} opacity={opacity} />
-    </div>
-  );
+  if (monsters.loading) {
+    return (
+      <div className='loadingScreen'>
+        <img src={spinner} className='spinner' />
+      </div>
+    );
+  } else {
+    return (
+      <div className='App'>
+        <SidebarComponent
+          monsters={monsters}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          setCurrentMonster={setCurrentMonster}
+          currentMonster={currentMonster}
+          setOpacity={setOpacity}
+        />
+        <MonsterViewComponent
+          currentMonster={currentMonster}
+          opacity={opacity}
+        />
+      </div>
+    );
+  }
 }
 
 export default App;

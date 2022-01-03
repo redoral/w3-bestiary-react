@@ -1,6 +1,5 @@
 import React from 'react';
 import './Sidebar.css';
-import spinner from '../../assets/spinner.gif';
 
 const SidebarComponent = (props) => {
   const selectMonster = (monster) => {
@@ -26,14 +25,24 @@ const SidebarComponent = (props) => {
         </span>
       </div>
       <div className='monsterList'>
-        <input type='text' className='searchBar' placeholder='Search...' />
+        <input
+          type='text'
+          className='searchBar'
+          placeholder='Search...'
+          onChange={(ev) => {
+            props.setSearchQuery(ev.target.value);
+          }}
+        />
         <p className='monstersTitle'>All monsters</p>
-        {props.monsters.loading ? (
-          <img src={spinner} className='spinner' />
-        ) : (
-          props.monsters.items.map((monster) => {
+        {props.monsters.items
+          .filter((query) => {
+            return query.name
+              .toLowerCase()
+              .includes(props.searchQuery.toLowerCase());
+          })
+          .map((monster) => {
             return (
-              <div className='monsterItem'>
+              <div className='monsterItem' key={monster.id}>
                 <img src={monster.img} className='sidebarMonsterIcon' />
                 <span
                   onClick={() => {
@@ -49,8 +58,7 @@ const SidebarComponent = (props) => {
                 </span>
               </div>
             );
-          })
-        )}
+          })}
       </div>
     </div>
   );
