@@ -1,5 +1,6 @@
 import React from 'react';
 import './Sidebar.css';
+import spinner from '../../assets/spinner.gif';
 
 const SidebarComponent = (props) => {
   const selectMonster = (monster) => {
@@ -27,25 +28,29 @@ const SidebarComponent = (props) => {
       <div className='monsterList'>
         <input type='text' className='searchBar' placeholder='Search...' />
         <p className='monstersTitle'>All monsters</p>
-        {props.monsters.map((monster) => {
-          return (
-            <div className='monsterItem'>
-              <img src={monster.img} className='sidebarMonsterIcon' />
-              <span
-                onClick={() => {
-                  selectMonster(monster);
-                }}
-                className={`${
-                  monster.name === props.currentMonster.name
-                    ? 'activeMonster'
-                    : ''
-                } sidebarMonsterName`}
-              >
-                {monster.name}
-              </span>
-            </div>
-          );
-        })}
+        {props.monsters.loading ? (
+          <img src={spinner} className='spinner' />
+        ) : (
+          props.monsters.items.map((monster) => {
+            return (
+              <div className='monsterItem'>
+                <img src={monster.img} className='sidebarMonsterIcon' />
+                <span
+                  onClick={() => {
+                    selectMonster(monster);
+                  }}
+                  className={`${
+                    monster.name === props.currentMonster.name
+                      ? 'activeMonster'
+                      : ''
+                  } sidebarMonsterName`}
+                >
+                  {monster.name}
+                </span>
+              </div>
+            );
+          })
+        )}
       </div>
     </div>
   );
