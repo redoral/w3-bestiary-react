@@ -15,8 +15,7 @@
 }
 
 .sidebarTitle {
-  font-size: 2em;
-  width: 300px;
+  font-size: 1.75em;
 }
 
 .searchBar {
@@ -61,10 +60,11 @@
   margin-left: 10px;
   font-weight: 500;
   color: #cecece;
+  transition: color 0.5s;
 }
 
 .sidebarMonsterName:hover {
-  color: #aaa;
+  color: #999;
 }
 
 .addMonsterButton {
@@ -79,7 +79,7 @@
   background-color: #060606;
   display: flex;
   align-items: center;
-  transition: border 0.5s, background-color 0.5s, color 0.5s;
+  transition: border 0.5s, background-color 0.5s, color 0.5s, transform 0.25s;
 }
 
 .addMonsterButton:hover {
@@ -88,8 +88,29 @@
   color: #060606;
 }
 
+.addMonsterButton:active {
+  transform: translateY(5px);
+}
+
+.addMonsterButton:hover .addMonsterIcon {
+  filter: invert();
+}
+
+.addMonsterText {
+  justify-self: center;
+  flex: 3;
+}
+
 .addMonsterIcon {
   justify-self: start;
   border-radius: 100px;
-  padding-right: 40px;
+  transition: filter 0.5s;
+}
+
+.activeMonster {
+  color: #c12b13;
+  transition: color 0.5s;
+}
+.activeMonster:hover {
+  color: #73190b;
 }

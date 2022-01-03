@@ -8,11 +8,13 @@ function App() {
   const [monsters, setMonsters] = React.useState([]);
   const [currentMonster, setCurrentMonster] = React.useState({});
   const [searchQuery, setSearchQuery] = React.useState('');
+  const [opacity, setOpacity] = React.useState(1);
 
   React.useEffect(() => {
-    axios
-      .get('http://127.0.0.1:8080/api/v1/monsters')
-      .then((res) => setMonsters(res.data));
+    axios.get('http://127.0.0.1:8080/api/v1/monsters').then((res) => {
+      setMonsters(res.data);
+      setCurrentMonster(res.data[0]);
+    });
   }, []);
 
   return (
@@ -22,8 +24,10 @@ function App() {
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         setCurrentMonster={setCurrentMonster}
+        currentMonster={currentMonster}
+        setOpacity={setOpacity}
       />
-      <MonsterViewComponent currentMonster={currentMonster} />
+      <MonsterViewComponent currentMonster={currentMonster} opacity={opacity} />
     </div>
   );
 }

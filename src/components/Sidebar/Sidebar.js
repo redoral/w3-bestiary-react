@@ -2,6 +2,15 @@ import React from 'react';
 import './Sidebar.css';
 
 const SidebarComponent = (props) => {
+  const selectMonster = (monster) => {
+    props.setOpacity(0);
+
+    setTimeout(() => {
+      props.setCurrentMonster(monster);
+      props.setOpacity(1);
+    }, 200);
+  };
+
   return (
     <div className='sidebarContainer'>
       <div className='sidebarHeader'>
@@ -12,7 +21,7 @@ const SidebarComponent = (props) => {
             height='24px'
             className='addMonsterIcon'
           />
-          Add a monster
+          <span className='addMonsterText'>Add a monster</span>
         </span>
       </div>
       <div className='monsterList'>
@@ -23,8 +32,14 @@ const SidebarComponent = (props) => {
             <div className='monsterItem'>
               <img src={monster.img} className='sidebarMonsterIcon' />
               <span
-                className='sidebarMonsterName'
-                onClick={() => props.setCurrentMonster(monster)}
+                onClick={() => {
+                  selectMonster(monster);
+                }}
+                className={`${
+                  monster.name === props.currentMonster.name
+                    ? 'activeMonster'
+                    : ''
+                } sidebarMonsterName`}
               >
                 {monster.name}
               </span>
