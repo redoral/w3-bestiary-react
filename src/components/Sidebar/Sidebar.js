@@ -15,20 +15,31 @@ const SidebarComponent = (props) => {
     <div className='sidebarContainer'>
       <div className='sidebarHeader'>
         <h1 className='sidebarTitle'>The Witcher 3 Bestiary</h1>
-        <span className='addMonsterButton'>
-          <img
-            src='https://static.wikia.nocookie.net/witcher/images/d/de/Tw3_icon_monster_nest.png'
-            height='24px'
-            className='addMonsterIcon'
-          />
-          <span className='addMonsterText'>Add a monster</span>
-        </span>
+        <div className='headerButtons'>
+          <span className='addMonsterButton'>
+            <img
+              src='https://static.wikia.nocookie.net/witcher/images/d/de/Tw3_icon_monster_nest.png'
+              height='24px'
+              className='addMonsterIcon'
+            />
+            <span className='addMonsterText'>Add a monster</span>
+          </span>
+          <span className='addMonsterButton'>
+            <img
+              src='https://static.wikia.nocookie.net/witcher/images/d/de/Tw3_icon_monster_nest.png'
+              height='24px'
+              className='addMonsterIcon'
+            />
+            <span className='addMonsterText'>Edit selected monster</span>
+          </span>
+        </div>
       </div>
       <div className='monsterList'>
         <input
           type='text'
           className='searchBar'
           placeholder='Search...'
+          maxLength={30}
           onChange={(ev) => {
             props.setSearchQuery(ev.target.value);
           }}

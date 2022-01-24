@@ -14,8 +14,8 @@ function App() {
   React.useEffect(() => {
     try {
       axios.get('http://127.0.0.1:8080/api/v1/monsters').then((res) => {
-        setMonsters({ loading: false, items: res.data });
         setCurrentMonster(res.data[0]);
+        setMonsters({ loading: false, items: res.data });
       });
     } catch (e) {
       console.log(e);
